@@ -43,7 +43,32 @@
     @media (max-width: 480px) {
       body { font-size: 16px !important; }
     }
-  </style>
+  
+    /* Listening Room */
+    .listening-room {
+      border-top: 1px solid var(--border);
+      padding: 3rem 3rem 2rem;
+    }
+    .listening-inner {
+      max-width: 700px;
+      margin: 0 auto;
+    }
+    .listening-label {
+      font-family: var(--font-sans);
+      font-size: .72rem;
+      font-weight: 400;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 1rem;
+    }
+    @media (max-width: 768px) {
+      .listening-room { padding: 2rem 1.5rem; }
+    }
+    @media (max-width: 480px) {
+      .listening-room { padding: 1.5rem 1rem; }
+    }
+</style>
   <meta property="og:title" content="Bluebird Song Productions">
   <meta property="og:description" content="Independent music label &amp; publishing imprint. Songs. Stories. Signals. Built from scratch, on purpose.">
   <meta property="og:image" content="https://mellowambience.github.io/BluebirdSongProductions/og-image.jpg">
@@ -172,6 +197,25 @@
       <span>Bluebird Song</span><span class="dot">ÃÂ·</span>
       <span>Nanoswarm Dawn</span><span class="dot">ÃÂ·</span>
       <span>Built for the Brave</span><span class="dot">ÃÂ·</span>
+    </div>
+  </section>
+
+
+  <!-- Listening Room -->
+  <section class="listening-room" aria-label="Listening room">
+    <div class="listening-inner">
+      <p class="listening-label">now playing</p>
+      <iframe
+        data-testid="embed-iframe"
+        style="border-radius:12px"
+        src="https://open.spotify.com/embed/playlist/37i9dQZF1EYkqdzj48dyYq?utm_source=generator"
+        width="100%"
+        height="352"
+        frameBorder="0"
+        allowfullscreen=""
+        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+        loading="lazy"
+      ></iframe>
     </div>
   </section>
 
