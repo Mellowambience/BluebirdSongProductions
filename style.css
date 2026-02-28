@@ -39,6 +39,7 @@ body {
   display: flex;
   flex-direction: column;
   overflow-x: hidden;
+  padding-bottom: 96px; /* space for fixed ambient player */
 }
 
 /* ---- HEADER ---- */
@@ -204,6 +205,11 @@ h1 em {
   overflow: hidden;
   padding: .75rem 0;
   background: var(--bg-surface);
+  display: flex;
+}
+
+.marquee-strip:hover .marquee-track {
+  animation-play-state: paused;
 }
 
 .marquee-track {
@@ -229,6 +235,8 @@ h1 em {
 
 @keyframes marquee {
   from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
   to   { transform: translateX(-50%); }
 }
 
@@ -551,6 +559,13 @@ footer {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.ambient-player ::selection {
+  background: rgba(201, 168, 76, 0.25);
+  color: var(--text);
 }
 
 /* Play/Pause button */
