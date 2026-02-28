@@ -1,5 +1,9 @@
+
+/* ===== MOBILE RESPONSIVENESS PATCH ===== */
+*, *::before, *::after { box-sizing: border-box; }
+img, video, iframe { max-width: 100%; height: auto; }
 /* ============================================================
-   BLUEBIRD SONG PRODUCTIONS — Site Stylesheet
+   BLUEBIRD SONG PRODUCTIONS â Site Stylesheet
    Midnight blue + soft gold. Cinematic. Minimal.
    ============================================================ */
 
