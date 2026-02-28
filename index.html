@@ -57,10 +57,10 @@
 
   —
 
-  and if the stars go dark before she\'s done
-  she\'ll grow her own light, she\'ll be her own sun
+  and if the stars go dark before she's done
+  she'll grow her own light, she'll be her own sun
   every petal a proof, every thorn a vow
-  Mars is not a place — it\'s a promise, somehow
+  Mars is not a place — it's a promise, somehow
 
   she blooms in the gap between who she was
   and the version of her that the future became
@@ -81,7 +81,7 @@
 
   <header>
     <div class="wordmark">
-      <span class="feather">᳤</span>
+      <span class="feather">ᳰ</span>
       <span class="label">Bluebird Song Productions</span>
     </div>
     <nav>
@@ -103,7 +103,7 @@
       <div class="ring ring-1"></div>
       <div class="ring ring-2"></div>
       <div class="ring ring-3"></div>
-      <span class="center-glyph">᳤</span>
+      <span class="center-glyph">ᳰ</span>
     </div>
   </main>
 
@@ -123,6 +123,38 @@
   <footer>
     <p>© 2026 Bluebird Song Productions &nbsp;·&nbsp; All rights reserved</p>
   </footer>
+
+  <!-- Ambient Radio Player -->
+  <div class="ambient-player" id="ambientPlayer">
+    <!-- Hidden YouTube iframe (audio source) -->
+    <iframe
+      id="ytAmbient"
+      src="https://www.youtube.com/embed/5qap5aO4i9A?autoplay=0&controls=0&loop=1&playlist=5qap5aO4i9A&enablejsapi=1"
+      allow="autoplay; encrypted-media"
+      allowfullscreen
+      style="position:absolute;width:1px;height:1px;opacity:0;pointer-events:none;"
+      title="Ambient audio"
+    ></iframe>
+
+    <div class="ap-inner">
+      <div class="ap-visualizer" id="apViz" aria-hidden="true">
+        <span></span><span></span><span></span><span></span><span></span>
+      </div>
+      <div class="ap-info">
+        <span class="ap-label">Ambient Radio</span>
+        <span class="ap-title" id="apTitle">Binaural Beats · Focus</span>
+      </div>
+      <button class="ap-btn" id="apToggle" aria-label="Play ambient audio">
+        <svg class="icon-play" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+        <svg class="icon-pause" viewBox="0 0 24 24" fill="currentColor" style="display:none"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+      </button>
+      <div class="ap-volume">
+        <input type="range" id="apVolume" min="0" max="100" value="40" aria-label="Volume" />
+      </div>
+    </div>
+  </div>
+
+  <script src="player.js"></script>
 
 </body>
 </html>
