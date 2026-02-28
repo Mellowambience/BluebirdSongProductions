@@ -645,3 +645,13 @@ footer {
   .ambient-player { bottom: 1rem; min-width: 240px; }
   .ap-volume { display: none; }
 }
+
+/* Small phones (under 480px) */
+@media (max-width: 480px) {
+  header { padding: 1rem 1.25rem; flex-wrap: wrap; gap: .75rem; }
+  nav { gap: 1rem; flex-wrap: wrap; }
+  nav a { font-size: .7rem; }
+  .hero { padding: 3rem 1.25rem 2.5rem; }
+  h1 { font-size: clamp(1.9rem, 8vw, 2.8rem); }
+  .ambient-player { min-width: 200px; max-width: calc(100vw - 2rem); left: 1rem; right: 1rem; transform: none; bottom: .75rem; }
+}
