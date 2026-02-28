@@ -62,13 +62,46 @@
       color: var(--text-muted);
       margin-bottom: 1rem;
     }
+    .lr-player-wrap {
+      position: relative;
+      border-radius: 12px;
+      overflow: hidden;
+    }
+    .lr-icon-overlay {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      pointer-events: none;
+      opacity: 1;
+      transition: opacity 1.2s ease;
+    }
+    .lr-icon-overlay.fade-out {
+      opacity: 0;
+    }
+    .lr-icon-img {
+      width: 140px;
+      height: 140px;
+      object-fit: cover;
+      border-radius: 50%;
+      box-shadow: 0 0 32px rgba(100,220,255,0.45), 0 0 64px rgba(100,220,255,0.2);
+      opacity: 0.88;
+      animation: lr-float 4s ease-in-out infinite;
+    }
+    @keyframes lr-float {
+      0%, 100% { transform: translateY(0px); }
+      50%       { transform: translateY(-8px); }
+    }
     @media (max-width: 768px) {
       .listening-room { padding: 2rem 1.5rem; }
+      .lr-icon-img { width: 100px; height: 100px; }
     }
     @media (max-width: 480px) {
       .listening-room { padding: 1.5rem 1rem; }
+      .lr-icon-img { width: 80px; height: 80px; }
     }
-</style>
+    </style>
   <meta property="og:title" content="Bluebird Song Productions">
   <meta property="og:description" content="Independent music label &amp; publishing imprint. Songs. Stories. Signals. Built from scratch, on purpose.">
   <meta property="og:image" content="https://mellowambience.github.io/BluebirdSongProductions/og-image.jpg">
@@ -205,19 +238,26 @@
   <section class="listening-room" aria-label="Listening room">
     <div class="listening-inner">
       <p class="listening-label">now playing</p>
-      <iframe
-        data-testid="embed-iframe"
-        style="border-radius:12px"
-        src="https://open.spotify.com/embed/playlist/37i9dQZF1EYkqdzj48dyYq?utm_source=generator"
-        width="100%"
-        height="352"
-        frameBorder="0"
-        allowfullscreen=""
-        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-        loading="lazy"
-      ></iframe>
+      <div class="lr-player-wrap">
+        <iframe
+          id="spotify-radio"
+          data-testid="embed-iframe"
+          src="https://open.spotify.com/embed/playlist/37i9dQZF1EYkqdzj48dyYq?utm_source=generator&autoplay=1"
+          width="100%"
+          height="352"
+          frameBorder="0"
+          allowfullscreen=""
+          allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+          loading="lazy"
+          style="border-radius:12px;display:block;"
+        ></iframe>
+        <div class="lr-icon-overlay" id="lrOverlay" aria-hidden="true">
+          <img src="radio-icon.png" alt="" class="lr-icon-img" draggable="false" />
+        </div>
+      </div>
     </div>
   </section>
+
 
   <footer>
     <p>ÃÂ© 2026 Bluebird Song Productions &nbsp;ÃÂ·&nbsp; All rights reserved</p>
@@ -303,5 +343,19 @@
   <iframe id='kofiframe' src='https://ko-fi.com/1aether1rose1/?hidefeed=true&widget=true&embed=true&preview=true' style='border:none;width:100%;padding:4px;background:#f9f9f9;' height='712' title='1aether1rose1'></iframe>
 </div>
 <!-- End Ko-fi Support Widget -->
+
+  <script>
+    // Fade radio icon overlay when user interacts
+    (function() {
+      var o = document.getElementById('lrOverlay');
+      if (!o) return;
+      setTimeout(function(){ o.classList.add('fade-out'); }, 3000);
+      var w = o.parentElement;
+      if (w) {
+        w.addEventListener('click', function(){ o.classList.add('fade-out'); }, { once: true });
+        w.addEventListener('touchstart', function(){ o.classList.add('fade-out'); }, { once: true });
+      }
+    })();
+  </script>
 </body>
 </html>
