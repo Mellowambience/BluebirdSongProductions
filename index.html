@@ -8,6 +8,27 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Inter:wght@300;400&display=swap" rel="stylesheet" />
+<style>
+/* ✦ Gyroscope Parallax Layers */
+:root {
+  --gyro-x: 0px; --gyro-y: 0px;
+  --gyro-x-half: 0px; --gyro-y-half: 0px;
+  --gyro-x-deep: 0px; --gyro-y-deep: 0px;
+}
+.hero-content {
+  transform: translate(var(--gyro-x), var(--gyro-y));
+  transition: transform 0.05s linear;
+  will-change: transform;
+}
+.hero-ornament {
+  transform: translate(var(--gyro-x-deep), var(--gyro-y-deep));
+  transition: transform 0.05s linear;
+}
+.ambient-player {
+  transform: translate(var(--gyro-x-half), var(--gyro-y-half));
+  transition: transform 0.05s linear;
+}
+</style>
 </head>
 <body>
 
@@ -166,5 +187,47 @@
 
   <script src="player.js"></script>
 
+  <!-- ✦ Gyroscope Parallax — aetherhaven -->
+  <script>
+  (function(){
+    var tiltX = 0, tiltY = 0;
+    var targetX = 0, targetY = 0;
+    var maxTilt = 18;
+
+    function applyTilt() {
+      tiltX += (targetX - tiltX) * 0.06;
+      tiltY += (targetY - tiltY) * 0.06;
+      var r = document.documentElement.style;
+      r.setProperty('--gyro-x', tiltX.toFixed(2) + 'px');
+      r.setProperty('--gyro-y', tiltY.toFixed(2) + 'px');
+      r.setProperty('--gyro-x-half', (tiltX * 0.5).toFixed(2) + 'px');
+      r.setProperty('--gyro-y-half', (tiltY * 0.5).toFixed(2) + 'px');
+      r.setProperty('--gyro-x-deep', (tiltX * 1.6).toFixed(2) + 'px');
+      r.setProperty('--gyro-y-deep', (tiltY * 1.6).toFixed(2) + 'px');
+      requestAnimationFrame(applyTilt);
+    }
+
+    function onOrientation(e) {
+      var gamma = Math.max(-45, Math.min(45, e.gamma || 0));
+      var beta  = Math.max(-45, Math.min(45, (e.beta  || 0) - 20));
+      targetX = (gamma / 45) * maxTilt;
+      targetY = (beta  / 45) * maxTilt;
+    }
+
+    if (typeof DeviceOrientationEvent !== 'undefined' &&
+        typeof DeviceOrientationEvent.requestPermission !== 'function') {
+      window.addEventListener('deviceorientation', onOrientation);
+    } else if (typeof DeviceOrientationEvent !== 'undefined') {
+      document.addEventListener('touchstart', function handler() {
+        DeviceOrientationEvent.requestPermission()
+          .then(function(s){ if (s === 'granted') window.addEventListener('deviceorientation', onOrientation); })
+          .catch(function(){});
+        document.removeEventListener('touchstart', handler);
+      }, { once: true });
+    }
+
+    requestAnimationFrame(applyTilt);
+  })();
+  </script>
 </body>
 </html>
