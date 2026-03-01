@@ -43,7 +43,8 @@ body {
   line-height: 1.7;
   min-height: 100vh;
   display: flex;
-  flex-direction: column;padding-bottom: 96px; /* space for fixed ambient player */
+  flex-direction: column;
+  padding-bottom: 96px; /* space for fixed ambient player */
 }
 
 /* ---- HEADER ---- */
