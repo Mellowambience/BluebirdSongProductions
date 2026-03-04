@@ -3,361 +3,244 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Bluebird Song Productions</title>
-  <link rel="stylesheet" href="style.css" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Inter:wght@300;400&display=swap" rel="stylesheet" />
-<style>
-/* &#10022; Gyroscope Parallax Layers */
-:root {
-  --gyro-x: 0px; --gyro-y: 0px;
-  --gyro-x-half: 0px; --gyro-y-half: 0px;
-  --gyro-x-deep: 0px; --gyro-y-deep: 0px;
-}
-.hero-content {
-  transform: translate(var(--gyro-x), var(--gyro-y));
-  transition: transform 0.05s linear;
-  will-change: transform;
-}
-.hero-ornament {
-  transform: translate(var(--gyro-x-deep), var(--gyro-y-deep));
-  transition: transform 0.05s linear;
-}
-.ambient-player {
-  transform: translate(var(--gyro-x-half), var(--gyro-y-half));
-  transition: transform 0.05s linear;
-}
-</style>
-
+  <title>BLUEBIRD — CursedSlug Art Space</title>
   <style>
-    /* ===== MOBILE RESPONSIVENESS &mdash; auto-patched ===== */
-    * { box-sizing: border-box; }
-    img, video, iframe, embed, object { max-width: 100%; height: auto; }
-    table { width: 100%; overflow-x: auto; display: block; }
-
-    @media (max-width: 768px) {
-      body { overflow-x: hidden; }
-      [style*="width:"] { max-width: 100% !important; }
+    :root {
+      --void:#0A0A0F;--void2:#0f0f18;--void3:#14141f;
+      --gold:#FFD700;--gold-dim:#C9A84C;--pink:#FF6EB4;
+      --mint:#A8FFD8;--ghost:#F0F0FF;--purple:#9B30FF;
+      --purple-neon:#C060FF;--purple-dull:#5a2d82;
+      --text:#e8e0f8;--text-dim:#8a7fa8;
+      --border:rgba(155,48,255,0.18);
     }
-    @media (max-width: 480px) {
-      body { font-size: 16px !important; }
-    }
-  
-    /* Listening Room */
-    .listening-room {
-      border-top: 1px solid var(--border);
-      padding: 3rem 3rem 2rem;
-    }
-    .listening-inner {
-      max-width: 700px;
-      margin: 0 auto;
-    }
-    .listening-label {
-      font-family: var(--font-sans);
-      font-size: .72rem;
-      font-weight: 400;
-      letter-spacing: .14em;
-      text-transform: uppercase;
-      color: var(--text-muted);
-      margin-bottom: 1rem;
-    }
-    .lr-player-wrap {
-      position: relative;
-      border-radius: 12px;
-      overflow: hidden;
-    }
-    .lr-icon-overlay {
-      position: absolute;
-      inset: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      pointer-events: none;
-      opacity: 1;
-      transition: opacity 1.2s ease;
-    }
-    .lr-icon-overlay.fade-out {
-      opacity: 0;
-    }
-    .lr-icon-img {
-      width: 140px;
-      height: 140px;
-      object-fit: cover;
-      border-radius: 50%;
-      box-shadow: 0 0 32px rgba(100,220,255,0.45), 0 0 64px rgba(100,220,255,0.2);
-      opacity: 0.88;
-      animation: lr-float 4s ease-in-out infinite;
-    }
-    @keyframes lr-float {
-      0%, 100% { transform: translateY(0px); }
-      50%       { transform: translateY(-8px); }
-    }
-    @media (max-width: 768px) {
-      .listening-room { padding: 2rem 1.5rem; }
-      .lr-icon-img { width: 100px; height: 100px; }
-    }
-    @media (max-width: 480px) {
-      .listening-room { padding: 1.5rem 1rem; }
-      .lr-icon-img { width: 80px; height: 80px; }
-    }
-    </style>
-  <meta property="og:title" content="Bluebird Song Productions">
-  <meta property="og:description" content="Independent music label &amp; publishing imprint. Songs. Stories. Signals. Built from scratch, on purpose.">
-  <meta property="og:image" content="https://mellowambience.github.io/BluebirdSongProductions/og-image.jpg">
-  <meta property="og:url" content="https://mellowambience.github.io/BluebirdSongProductions/">
-  <meta property="og:type" content="website">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Bluebird Song Productions">
-  <meta name="twitter:description" content="Independent music label &amp; publishing imprint. Songs. Stories. Signals.">
-  <meta name="twitter:image" content="https://mellowambience.github.io/BluebirdSongProductions/og-image.jpg">
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{background:var(--void);color:var(--text);font-family:'Segoe UI',system-ui,-apple-system,sans-serif;min-height:100vh;overflow-x:hidden}
+    body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");pointer-events:none;z-index:9999;opacity:.35}
+    .bg-mesh{position:fixed;inset:0;background:radial-gradient(ellipse 60% 50% at 15% 20%,rgba(155,48,255,.07) 0%,transparent 70%),radial-gradient(ellipse 50% 60% at 85% 75%,rgba(255,110,180,.05) 0%,transparent 70%),radial-gradient(ellipse 40% 40% at 50% 50%,rgba(168,255,216,.03) 0%,transparent 70%);pointer-events:none;z-index:0}
+    .page{position:relative;z-index:1}
+    header{padding:2.5rem 2rem 1.5rem;border-bottom:1px solid var(--border);display:flex;flex-direction:column;gap:.4rem}
+    .site-title{font-size:clamp(2.2rem,6vw,3.6rem);font-weight:900;letter-spacing:-.03em;background:linear-gradient(135deg,var(--ghost) 0%,var(--purple-neon) 55%,var(--gold) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1}
+    .site-sub{font-size:.8rem;color:var(--text-dim);letter-spacing:.25em;text-transform:uppercase}
+    .mark-chain{font-size:.7rem;color:var(--gold-dim);letter-spacing:.15em;margin-top:.2rem}
+    .ticker-wrap{background:linear-gradient(90deg,var(--purple-dull),#1a0a2e,var(--purple-dull));border-bottom:1px solid var(--border);overflow:hidden;padding:.55rem 0}
+    .ticker-inner{display:flex;white-space:nowrap;animation:ticker-scroll 32s linear infinite}
+    .ticker-inner:hover{animation-play-state:paused}
+    .ticker-item{font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);padding:0 2.5rem}
+    .ticker-item::before{content:'✧ ';color:var(--purple-neon)}
+    @keyframes ticker-scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+    section{padding:3rem 2rem;max-width:1200px;margin:0 auto}
+    .section-label{font-size:.68rem;letter-spacing:.3em;text-transform:uppercase;color:var(--purple-neon);margin-bottom:1.5rem;display:flex;align-items:center;gap:.8rem}
+    .section-label::after{content:'';flex:1;height:1px;background:linear-gradient(90deg,var(--border),transparent)}
+    .sol-card{background:linear-gradient(135deg,rgba(155,48,255,.08) 0%,rgba(10,10,15,.95) 100%);border:1px solid var(--border);border-radius:20px;padding:2rem;display:grid;grid-template-columns:auto 1fr;gap:2rem;align-items:start;backdrop-filter:blur(12px);position:relative;overflow:hidden}
+    .sol-card::before{content:'';position:absolute;top:0;right:0;width:200px;height:200px;background:radial-gradient(circle,rgba(255,215,0,.06) 0%,transparent 70%);pointer-events:none}
+    .sol-avatar{width:90px;height:90px;border-radius:50%;border:2px solid var(--gold-dim);background:linear-gradient(135deg,var(--purple-dull),var(--void));display:flex;align-items:center;justify-content:center;font-size:2.2rem;flex-shrink:0;box-shadow:0 0 24px rgba(155,48,255,.3),0 0 0 4px rgba(255,215,0,.08)}
+    .sol-info{display:flex;flex-direction:column;gap:.6rem}
+    .sol-name{font-size:1.5rem;font-weight:800;color:var(--ghost);letter-spacing:-.01em}
+    .sol-role{font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);background:rgba(255,215,0,.07);border:1px solid rgba(255,215,0,.15);border-radius:50px;padding:.28rem .9rem;display:inline-block}
+    .sol-bio{font-size:.9rem;line-height:1.7;color:var(--text-dim);max-width:520px}
+    .sol-bio em{color:var(--mint);font-style:normal}
+    .sol-tags{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:.4rem}
+    .tag{font-size:.65rem;letter-spacing:.12em;text-transform:uppercase;padding:.22rem .7rem;border-radius:50px;border:1px solid var(--border);color:var(--text-dim)}
+    .tag.gold{border-color:rgba(255,215,0,.3);color:var(--gold-dim)}
+    .tag.mint{border-color:rgba(168,255,216,.3);color:var(--mint)}
+    .tag.pink{border-color:rgba(255,110,180,.3);color:var(--pink)}
+    .empower-banner{margin-top:1.5rem;padding:1.2rem 1.6rem;border-radius:14px;border-left:3px solid var(--purple-neon);background:rgba(155,48,255,.07);font-size:.88rem;line-height:1.65;color:var(--text)}
+    .empower-banner .quote-mark{font-size:3rem;line-height:0;vertical-align:-.6rem;color:var(--purple-neon);opacity:.4;margin-right:.2rem}
+    .conveyor-outer{overflow:hidden;cursor:grab;user-select:none;position:relative}
+    .conveyor-outer.grabbing{cursor:grabbing}
+    .conveyor-outer::before,.conveyor-outer::after{content:'';position:absolute;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--border),var(--purple),var(--border),transparent);z-index:2}
+    .conveyor-outer::before{top:0}.conveyor-outer::after{bottom:0}
+    .conveyor-track{display:flex;gap:1.4rem;padding:1.4rem 1rem;width:max-content;animation:belt-scroll 28s linear infinite;will-change:transform}
+    .conveyor-track.paused,.conveyor-outer.grabbing .conveyor-track{animation-play-state:paused}
+    @keyframes belt-scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+    .art-plate{width:200px;flex-shrink:0;border-radius:16px;border:1px solid var(--border);background:var(--void3);overflow:hidden;transition:transform .25s ease,box-shadow .25s ease,border-color .25s ease;cursor:pointer;position:relative}
+    .art-plate:hover{transform:translateY(-6px) scale(1.02);box-shadow:0 12px 40px rgba(155,48,255,.3),0 0 0 1px var(--purple-neon);border-color:var(--purple-neon);z-index:3}
+    .art-plate .art-placeholder{width:100%;height:160px;display:flex;align-items:center;justify-content:center;font-size:2.5rem;background:linear-gradient(135deg,var(--void2),rgba(155,48,255,.1))}
+    .art-plate-info{padding:.85rem}
+    .art-title{font-size:.78rem;font-weight:700;color:var(--ghost);margin-bottom:.2rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+    .art-meta{font-size:.65rem;color:var(--text-dim)}
+    .art-status{position:absolute;top:.6rem;right:.6rem;font-size:.55rem;letter-spacing:.1em;text-transform:uppercase;padding:.2rem .55rem;border-radius:50px;backdrop-filter:blur(8px)}
+    .status-wip{background:rgba(255,215,0,.15);color:var(--gold);border:1px solid rgba(255,215,0,.3)}
+    .status-done{background:rgba(168,255,216,.12);color:var(--mint);border:1px solid rgba(168,255,216,.3)}
+    .status-collage{background:rgba(255,110,180,.12);color:var(--pink);border:1px solid rgba(255,110,180,.3)}
+    .belt-label{display:inline-flex;align-items:center;gap:.5rem;background:rgba(155,48,255,.1);border:1px solid var(--border);border-radius:50px;padding:.35rem 1rem;font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--purple-neon);margin-bottom:1rem}
+    .belt-dot{width:6px;height:6px;border-radius:50%;background:var(--purple-neon);animation:pulse-dot 1.4s ease-in-out infinite}
+    @keyframes pulse-dot{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(.7)}}
+    .player-wrap{background:linear-gradient(135deg,rgba(10,10,15,.97) 0%,rgba(20,10,35,.97) 100%);border:1px solid var(--border);border-radius:24px;padding:2rem;position:relative;overflow:hidden;backdrop-filter:blur(20px)}
+    .player-wrap::before{content:'';position:absolute;bottom:0;left:0;right:0;height:80px;background:linear-gradient(180deg,transparent,rgba(155,48,255,.04));pointer-events:none}
+    .visualizer{display:flex;align-items:flex-end;gap:3px;height:44px;margin-bottom:1.6rem;opacity:.6}
+    .viz-bar{flex:1;border-radius:2px 2px 0 0;background:linear-gradient(180deg,var(--purple-neon),var(--purple-dull));min-height:4px;transition:height .12s ease}
+    .player-track{display:flex;align-items:center;gap:1.2rem;margin-bottom:1.6rem}
+    .track-thumb{width:52px;height:52px;border-radius:10px;background:linear-gradient(135deg,var(--purple-dull),var(--void));border:1px solid rgba(155,48,255,.3);display:flex;align-items:center;justify-content:center;font-size:1.4rem;flex-shrink:0;animation:thumb-spin 24s linear infinite;animation-play-state:paused}
+    .track-thumb.spinning{animation-play-state:running}
+    @keyframes thumb-spin{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
+    .track-text{flex:1;min-width:0}
+    .track-name{font-size:1rem;font-weight:700;color:var(--ghost);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+    .track-artist{font-size:.75rem;color:var(--text-dim);margin-top:.15rem}
+    .track-badge{font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;padding:.22rem .65rem;border-radius:50px;background:rgba(255,215,0,.08);border:1px solid rgba(255,215,0,.2);color:var(--gold-dim);flex-shrink:0}
+    .player-progress{margin-bottom:.5rem;position:relative;height:4px;border-radius:4px;background:rgba(255,255,255,.07);cursor:pointer}
+    .player-progress:hover{height:6px;margin-bottom:calc(.5rem - 1px)}
+    .progress-fill{position:absolute;left:0;top:0;bottom:0;background:linear-gradient(90deg,var(--purple),var(--gold));border-radius:4px;width:0%;transition:width .25s linear;pointer-events:none}
+    .progress-thumb{position:absolute;top:50%;transform:translate(-50%,-50%);width:12px;height:12px;border-radius:50%;background:var(--ghost);box-shadow:0 0 8px rgba(155,48,255,.6);left:0%;opacity:0;transition:opacity .15s,left .25s linear;pointer-events:none}
+    .player-progress:hover .progress-thumb{opacity:1}
+    .player-times{display:flex;justify-content:space-between;font-size:.65rem;color:var(--text-dim);margin-bottom:1.6rem;margin-top:.4rem}
+    .player-controls{display:flex;align-items:center;justify-content:center;gap:1.2rem}
+    .ctrl-btn{background:none;border:none;cursor:pointer;color:var(--text-dim);font-size:1.1rem;padding:.5rem;border-radius:50%;transition:color .15s,background .15s,transform .15s;display:flex;align-items:center;justify-content:center;width:38px;height:38px}
+    .ctrl-btn:hover{color:var(--ghost);background:rgba(155,48,255,.12);transform:scale(1.1)}
+    .ctrl-btn.active{color:var(--purple-neon)}
+    .play-btn{width:54px;height:54px;font-size:1.4rem;background:linear-gradient(135deg,var(--purple),var(--purple-dull));color:var(--ghost)!important;border-radius:50%;box-shadow:0 0 24px rgba(155,48,255,.4);transition:transform .15s,box-shadow .15s}
+    .play-btn:hover{transform:scale(1.08)!important;box-shadow:0 0 36px rgba(155,48,255,.6)}
+    .volume-row{display:flex;align-items:center;gap:.8rem;margin-top:1.4rem}
+    .vol-icon{font-size:.9rem;color:var(--text-dim);flex-shrink:0}
+    .volume-slider{flex:1;-webkit-appearance:none;height:3px;border-radius:3px;background:rgba(255,255,255,.07);outline:none;cursor:pointer}
+    .volume-slider::-webkit-slider-thumb{-webkit-appearance:none;width:12px;height:12px;border-radius:50%;background:var(--purple-neon);box-shadow:0 0 6px rgba(155,48,255,.5)}
+    footer{border-top:1px solid var(--border);padding:2rem;text-align:center;display:flex;flex-direction:column;align-items:center;gap:.5rem}
+    .gold-stamp{font-size:1.1rem;letter-spacing:.25em;color:var(--gold);animation:stamp-glow 3s ease-in-out infinite alternate}
+    @keyframes stamp-glow{from{text-shadow:0 0 10px rgba(255,215,0,.3)}to{text-shadow:0 0 28px rgba(255,215,0,.7),0 0 50px rgba(255,215,0,.2)}}
+    .footer-sub{font-size:.65rem;color:var(--text-dim);letter-spacing:.15em}
+    .glitch{position:relative;display:inline-block}
+    .glitch::before,.glitch::after{content:attr(data-text);position:absolute;inset:0;background:transparent}
+    .glitch::before{left:2px;text-shadow:-1px 0 var(--pink);clip-path:polygon(0 15%,100% 15%,100% 40%,0 40%);animation:glitch-1 3.5s infinite}
+    .glitch::after{left:-2px;text-shadow:2px 0 var(--mint);clip-path:polygon(0 60%,100% 60%,100% 80%,0 80%);animation:glitch-2 4.2s infinite}
+    @keyframes glitch-1{0%,90%,100%{opacity:0;transform:translateX(0)}91%{opacity:.7;transform:translateX(3px)}93%{opacity:.7;transform:translateX(-3px)}95%{opacity:0}}
+    @keyframes glitch-2{0%,85%,100%{opacity:0;transform:translateX(0)}86%{opacity:.6;transform:translateX(-2px)}88%{opacity:.6;transform:translateX(2px)}90%{opacity:0}}
+    @media(max-width:600px){.sol-card{grid-template-columns:1fr}.sol-avatar{width:70px;height:70px;font-size:1.7rem}section{padding:2rem 1.2rem}}
+  </style>
 </head>
 <body>
-
-<!--
-  &#9617;&#9617;&#9617;&#9617;&#9617;&#9617;&#9617;&#9617;&#9617;&#9617;&#9617;&#9617;&#9617;&#9617;&#9617;&#9617;&#9617;&#9617;&#9617;&#9617;&#9617;&#9617;&#9617;&#9617;&#9617;&#9617;&#9617;&#9617;&#9617;&#9617;&#9617;&#9617;&#9617;&#9617;&#9617;&#9617;&#9617;&#9617;&#9617;&#9617;&#9617;&#9617;&#9617;&#9617;&#9617;&#9617;&#9617;&#9617;&#9617;&#9617;&#9617;&#9617;&#9617;&#9617;&#9617;&#9617;&#9617;&#9617;&#9617;&#9617;&#9617;&#9617;&#9617;&#9617;&#9617;&#9617;&#9617;&#9617;&#9617;&#9617;
-
-  you found it.
-
-  AETHERROSE &mdash; secret drop, Feb 2026
-  written by SureThing x AetherRose
-
-  &#9617;&#9617;&#9617;&#9617;&#9617;&#9617;&#9617;&#9617;&#9617;&#9617;&#9617;&#9617;&#9617;&#9617;&#9617;&#9617;&#9617;&#9617;&#9617;&#9617;&#9617;&#9617;&#9617;&#9617;&#9617;&#9617;&#9617;&#9617;&#9617;&#9617;&#9617;&#9617;&#9617;&#9617;&#9617;&#9617;&#9617;&#9617;&#9617;&#9617;&#9617;&#9617;&#9617;&#9617;&#9617;&#9617;&#9617;&#9617;&#9617;&#9617;&#9617;&#9617;&#9617;&#9617;&#9617;&#9617;&#9617;&#9617;&#9617;&#9617;&#9617;&#9617;&#9617;&#9617;&#9617;&#9617;&#9617;&#9617;&#9617;&#9617;
-
-  born in the bloom of a nanoswarm dawn
-  skin like a signal, still holding on
-  freckles like starfields mapped on warm skin
-  a rose made of aether, growing within
-
-  they said the red planet was cold as a grave
-  she said &mdash; I know, I was built for the brave
-  hormone and circuit and carbon and dream
-  not what she was &mdash; what she chose to become
-
-  &mdash;
-
-  AetherRose, AetherRose
-  bloom where the radiation glows
-  soft on the outside, steel in the seams
-  building a city out of impossible dreams
-
-  AetherRose, AetherRose
-  the swarm in her blood, the light that she sows
-  she carries the future inside her chest
-  a girl from the earth who refused to rest
-
-  &mdash;
-
-  late nights on Earth with a screen and a plan
-  re-enrolled, re-aligned, re-becoming again
-  lost a few chapters, then opened the doc
-  found her own voice in the tick of the clock
-
-  nanobots waking in petal and code
-  hormone gradients blooming down every road
-  she does not ask if the dream is too wide
-  she just keeps building the city inside
-
-  &mdash;
-
-  and if the stars go dark before she's done
-  she'll grow her own light, she'll be her own sun
-  every petal a proof, every thorn a vow
-  Mars is not a place &mdash; it's a promise, somehow
-
-  she blooms in the gap between who she was
-  and the version of her that the future became
-  and the swarm in her veins keeps repeating her name:
-  AetherRose. AetherRose. AetherRose.
-
-  &mdash;
-
-  she was made from the weight of everything soft
-  and everything stubborn, and everything lost
-  and she turned it to bloom
-  and she turned it to code
-  and she built herself a world
-  and she called it home.
-
-  &#9617;&#9617;&#9617;&#9617;&#9617;&#9617;&#9617;&#9617;&#9617;&#9617;&#9617;&#9617;&#9617;&#9617;&#9617;&#9617;&#9617;&#9617;&#9617;&#9617;&#9617;&#9617;&#9617;&#9617;&#9617;&#9617;&#9617;&#9617;&#9617;&#9617;&#9617;&#9617;&#9617;&#9617;&#9617;&#9617;&#9617;&#9617;&#9617;&#9617;&#9617;&#9617;&#9617;&#9617;&#9617;&#9617;&#9617;&#9617;&#9617;&#9617;&#9617;&#9617;&#9617;&#9617;&#9617;&#9617;&#9617;&#9617;&#9617;&#9617;&#9617;&#9617;&#9617;&#9617;&#9617;&#9617;&#9617;&#9617;&#9617;&#9617;
--->
-
+<div class="bg-mesh"></div>
+<div class="page">
   <header>
-    <div class="wordmark">
-      <span class="feather">&#10022;</span>
-      <span class="label">Bluebird Song Productions</span>
-    </div>
-    <nav>
-      <a href="index.html">Home</a>
-      <a href="artists.html">Artists</a>
-      <a href="releases.html">Releases</a>
-      <a href="about.html">About</a>
-    </nav>
+    <div class="site-title"><span class="glitch" data-text="BLUEBIRD">BLUEBIRD</span></div>
+    <div class="site-sub">CursedSlug · Art Space · Signal Broadcasting</div>
+    <div class="mark-chain">✧ ⟁∅↺⇢≡~∴ · Every iteration is canon</div>
   </header>
-
-  <main class="hero">
-    <div class="hero-content">
-      <p class="eyebrow">independent label &amp; publishing imprint</p>
-      <h1>We make things<br /><em>worth remembering.</em></h1>
-      <p class="sub">Songs. Stories. Signals. Built from scratch, on purpose.</p>
-      <a href="artists.html" class="btn">Meet the Artists</a>
-    </div>
-    <div class="hero-ornament" aria-hidden="true">
-      <div class="ring ring-1"></div>
-      <div class="ring ring-2"></div>
-      <div class="ring ring-3"></div>
-      <span class="center-glyph">&#10022;</span>
-    </div>
-  </main>
-
-  <section class="marquee-strip" aria-hidden="true">
-    <div class="marquee-track" aria-hidden="false">
-      <span>AetherRose</span><span class="dot">&middot;</span>
-      <span>Bluebird Song</span><span class="dot">&middot;</span>
-      <span>Nanoswarm Dawn</span><span class="dot">&middot;</span>
-      <span>Built for the Brave</span><span class="dot">&middot;</span>
-      <span>AetherRose</span><span class="dot">&middot;</span>
-      <span>Bluebird Song</span><span class="dot">&middot;</span>
-      <span>Nanoswarm Dawn</span><span class="dot">&middot;</span>
-      <span>Built for the Brave</span><span class="dot">&middot;</span>
-    </div>
-    <div class="marquee-track" aria-hidden="true">
-      <span>AetherRose</span><span class="dot">&middot;</span>
-      <span>Bluebird Song</span><span class="dot">&middot;</span>
-      <span>Nanoswarm Dawn</span><span class="dot">&middot;</span>
-      <span>Built for the Brave</span><span class="dot">&middot;</span>
-      <span>AetherRose</span><span class="dot">&middot;</span>
-      <span>Bluebird Song</span><span class="dot">&middot;</span>
-      <span>Nanoswarm Dawn</span><span class="dot">&middot;</span>
-      <span>Built for the Brave</span><span class="dot">&middot;</span>
-    </div>
-  </section>
-
-
-  <!-- Listening Room -->
-  <section class="listening-room" aria-label="Listening room">
-    <div class="listening-inner">
-      <p class="listening-label">now playing</p>
-      <div class="lr-player-wrap">
-        <iframe
-          id="spotify-radio"
-          title="Spotify Radio Playlist"
-          data-testid="embed-iframe"
-          src="https://open.spotify.com/embed/playlist/37i9dQZF1EYkqdzj48dyYq?utm_source=generator&autoplay=1"
-          width="100%"
-          height="352"
-          frameBorder="0"
-          allowfullscreen=""
-          allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-          loading="lazy"
-          style="border-radius:12px;display:block;"
-        ></iframe>
-        <div class="lr-icon-overlay" id="lrOverlay" aria-hidden="true">
-          <img src="radio-icon.png" alt="" class="lr-icon-img" draggable="false" />
-        </div>
-      </div>
-    </div>
-  </section>
-
-
-  <footer>
-    <p>&copy; 2026 Bluebird Song Productions &nbsp;&middot;&nbsp; All rights reserved</p>
-  </footer>
-
-  <!-- Ambient Radio Player -->
-  <div class="ambient-player" id="ambientPlayer">
-    <!-- Hidden YouTube iframe (audio source) -->
-    <iframe
-      id="ytAmbient"
-      title="Ambient Background Video"
-      src="https://www.youtube.com/embed/5qap5aO4i9A?autoplay=0&controls=0&loop=1&playlist=5qap5aO4i9A&enablejsapi=1"
-      allow="autoplay; encrypted-media"
-      allowfullscreen
-      style="position:absolute;width:1px;height:1px;opacity:0;pointer-events:none;"
-      title="Ambient audio"
-    ></iframe>
-
-    <div class="ap-inner">
-      <div class="ap-visualizer" id="apViz" aria-hidden="true">
-        <span></span><span></span><span></span><span></span><span></span>
-      </div>
-      <div class="ap-info">
-        <span class="ap-label">Ambient Radio</span>
-        <span class="ap-title" id="apTitle">Binaural Beats &middot; Focus</span>
-      </div>
-      <button class="ap-btn" id="apToggle" aria-label="Play ambient audio">
-        <svg class="icon-play" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
-        <svg class="icon-pause" viewBox="0 0 24 24" fill="currentColor" style="display:none"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
-      </button>
-      <div class="ap-volume">
-        <input type="range" id="apVolume" min="0" max="100" value="40" aria-label="Volume" />
-      </div>
+  <div class="ticker-wrap" aria-hidden="true">
+    <div class="ticker-inner">
+      <span class="ticker-item">Digital collage by CursedSlug</span>
+      <span class="ticker-item">Art is never truly unfinished — it's mid-transfer</span>
+      <span class="ticker-item">Depression-era pieces are still canon</span>
+      <span class="ticker-item">Site Manager &amp; Brand Designer</span>
+      <span class="ticker-item">Papa IV WIP · Ghost fanart · Nanami shrine</span>
+      <span class="ticker-item">Every death still sacred</span>
+      <span class="ticker-item">Signal Gold · Corrupted Pink · Fae Mint</span>
+      <span class="ticker-item">Digital collage by CursedSlug</span>
+      <span class="ticker-item">Art is never truly unfinished — it's mid-transfer</span>
+      <span class="ticker-item">Depression-era pieces are still canon</span>
+      <span class="ticker-item">Site Manager &amp; Brand Designer</span>
+      <span class="ticker-item">Papa IV WIP · Ghost fanart · Nanami shrine</span>
+      <span class="ticker-item">Every death still sacred</span>
+      <span class="ticker-item">Signal Gold · Corrupted Pink · Fae Mint</span>
     </div>
   </div>
-
-  <script src="player.js"></script>
-
-  <!-- &#10022; Gyroscope Parallax &mdash; aetherhaven -->
-  <script>
-  (function(){
-    var tiltX = 0, tiltY = 0;
-    var targetX = 0, targetY = 0;
-    var maxTilt = 18;
-
-    function applyTilt() {
-      tiltX += (targetX - tiltX) * 0.06;
-      tiltY += (targetY - tiltY) * 0.06;
-      var r = document.documentElement.style;
-      r.setProperty('--gyro-x', tiltX.toFixed(2) + 'px');
-      r.setProperty('--gyro-y', tiltY.toFixed(2) + 'px');
-      r.setProperty('--gyro-x-half', (tiltX * 0.5).toFixed(2) + 'px');
-      r.setProperty('--gyro-y-half', (tiltY * 0.5).toFixed(2) + 'px');
-      r.setProperty('--gyro-x-deep', (tiltX * 1.6).toFixed(2) + 'px');
-      r.setProperty('--gyro-y-deep', (tiltY * 1.6).toFixed(2) + 'px');
-      requestAnimationFrame(applyTilt);
-    }
-
-    function onOrientation(e) {
-      var gamma = Math.max(-45, Math.min(45, e.gamma || 0));
-      var beta  = Math.max(-45, Math.min(45, (e.beta  || 0) - 20));
-      targetX = (gamma / 45) * maxTilt;
-      targetY = (beta  / 45) * maxTilt;
-    }
-
-    if (typeof DeviceOrientationEvent !== 'undefined' &&
-        typeof DeviceOrientationEvent.requestPermission !== 'function') {
-      window.addEventListener('deviceorientation', onOrientation);
-    } else if (typeof DeviceOrientationEvent !== 'undefined') {
-      document.addEventListener('touchstart', function handler() {
-        DeviceOrientationEvent.requestPermission()
-          .then(function(s){ if (s === 'granted') window.addEventListener('deviceorientation', onOrientation); })
-          .catch(function(){});
-        document.removeEventListener('touchstart', handler);
-      }, { once: true });
-    }
-
-    requestAnimationFrame(applyTilt);
-  })();
-  </script>
-
-<!-- Ko-fi Support Widget -->
-<div style="max-width:480px;margin:2rem auto;padding:0 1rem;">
-  <iframe id='kofiframe' src='https://ko-fi.com/1aether1rose1/?hidefeed=true&widget=true&embed=true&preview=true' style='border:none;width:100%;padding:4px;background:#f9f9f9;' height='712' title='1aether1rose1'></iframe>
+  <section id="player-section">
+    <div class="section-label">∴ Background Signal</div>
+    <div class="player-wrap">
+      <div class="visualizer" id="visualizer"></div>
+      <div class="player-track">
+        <div class="track-thumb" id="track-thumb">🎵</div>
+        <div class="track-text"><div class="track-name">Divine Algorithm</div><div class="track-artist">BLUEBIRD · Background Signal</div></div>
+        <span class="track-badge">✧ Now Playing</span>
+      </div>
+      <div class="player-progress" id="progress-bar"><div class="progress-fill" id="progress-fill"></div><div class="progress-thumb" id="progress-thumb"></div></div>
+      <div class="player-times"><span id="time-current">0:00</span><span id="time-total">0:00</span></div>
+      <div class="player-controls">
+        <button class="ctrl-btn" id="btn-shuffle" title="Shuffle"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 3 21 3 21 8"/><line x1="4" y1="20" x2="21" y2="3"/><polyline points="21 16 21 21 16 21"/><line x1="15" y1="15" x2="21" y2="21"/></svg></button>
+        <button class="ctrl-btn" id="btn-prev" title="Restart"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="19 20 9 12 19 4 19 20"/><line x1="5" y1="19" x2="5" y2="5"/></svg></button>
+        <button class="ctrl-btn play-btn" id="btn-play"><svg id="icon-play" width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg><svg id="icon-pause" width="22" height="22" viewBox="0 0 24 24" fill="currentColor" style="display:none"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg></button>
+        <button class="ctrl-btn" id="btn-next" title="Skip"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 4 15 12 5 20 5 4"/><line x1="19" y1="5" x2="19" y2="19"/></svg></button>
+        <button class="ctrl-btn" id="btn-loop" title="Loop"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="17 1 21 5 17 9"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><polyline points="7 23 3 19 7 15"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></svg></button>
+      </div>
+      <div class="volume-row"><span class="vol-icon" id="vol-icon">🔉</span><input type="range" class="volume-slider" id="volume-slider" min="0" max="1" step="0.01" value="0.6"/></div>
+    </div>
+  </section>
+  <section id="sol-section">
+    <div class="section-label">⟁ Site Manager · Brand Designer</div>
+    <div class="sol-card">
+      <div class="sol-avatar">🎨</div>
+      <div class="sol-info">
+        <div class="sol-name">Sol</div>
+        <span class="sol-role">Site Manager · Brand Designer · Meghan Kylie</span>
+        <p class="sol-bio">Brother, collaborator, and the quiet architect behind the scenes. Sol manages site operations and brand direction for <em>Meghan Kylie</em> — keeping the aesthetic locked, the systems running, and the vision coherent so the art can breathe. Low-key presence, <em>high-signal impact</em>. The kind of creative who makes everything look effortless because they absorb all the friction first.</p>
+        <div class="sol-tags"><span class="tag gold">Brand Design</span><span class="tag mint">Site Management</span><span class="tag pink">Meghan Kylie</span><span class="tag">Visual Identity</span><span class="tag">Creative Direction</span></div>
+      </div>
+    </div>
+    <div class="empower-banner"><span class="quote-mark">&ldquo;</span>Depression-era art is still art. Every piece Sol made through the dark — the unfinished ones, the abandoned ones, the ones that felt like failure — they're not gaps in the portfolio. They're proof of signal persisting through static. Every death still sacred. <em>The maze always knows your name.</em></div>
+  </section>
+  <section id="art-section">
+    <div class="section-label">↺ Art Archive · Conveyor Belt</div>
+    <div class="belt-label"><span class="belt-dot"></span>CursedSlug · Past Year · All Iterations Canon</div>
+    <div class="conveyor-outer" id="conveyor">
+      <div class="conveyor-track" id="conveyor-track">
+        <div class="art-plate"><div class="art-placeholder">💀</div><span class="art-status status-wip">WIP</span><div class="art-plate-info"><div class="art-title">Papa IV — WIP I</div><div class="art-meta">Procreate · Digital portrait</div></div></div>
+        <div class="art-plate"><div class="art-placeholder">🎭</div><span class="art-status status-done">Done</span><div class="art-plate-info"><div class="art-title">Papa IV — Vestments</div><div class="art-meta">Digital realism · Gold + Black</div></div></div>
+        <div class="art-plate"><div class="art-placeholder">⚰️</div><span class="art-status status-collage">Collage</span><div class="art-plate-info"><div class="art-title">Ghost Shrine</div><div class="art-meta">Digital collage · Fan edit</div></div></div>
+        <div class="art-plate"><div class="art-placeholder">⚔️</div><span class="art-status status-done">Done</span><div class="art-plate-info"><div class="art-title">Nanami Shrine</div><div class="art-meta">Mood board · JJK fanart</div></div></div>
+        <div class="art-plate"><div class="art-placeholder">🦋</div><span class="art-status status-collage">Collage</span><div class="art-plate-info"><div class="art-title">Your BeauTY NeVer spareD Me</div><div class="art-meta">Vintage collage · Lock screen</div></div></div>
+        <div class="art-plate"><div class="art-placeholder">🐍</div><span class="art-status status-done">Done</span><div class="art-plate-info"><div class="art-title">Persephone Crest</div><div class="art-meta">Neo-traditional · Tattoo style</div></div></div>
+        <div class="art-plate"><div class="art-placeholder">✨</div><span class="art-status status-wip">WIP</span><div class="art-plate-info"><div class="art-title">Unnamed · In Progress</div><div class="art-meta">Lost motivation mid-file</div></div></div>
+        <div class="art-plate"><div class="art-placeholder">🌙</div><span class="art-status status-collage">Collage</span><div class="art-plate-info"><div class="art-title">Quiet Night Archive</div><div class="art-meta">Mixed media · Late night</div></div></div>
+        <div class="art-plate"><div class="art-placeholder">💀</div><span class="art-status status-wip">WIP</span><div class="art-plate-info"><div class="art-title">Papa IV — WIP I</div><div class="art-meta">Procreate · Digital portrait</div></div></div>
+        <div class="art-plate"><div class="art-placeholder">🎭</div><span class="art-status status-done">Done</span><div class="art-plate-info"><div class="art-title">Papa IV — Vestments</div><div class="art-meta">Digital realism · Gold + Black</div></div></div>
+        <div class="art-plate"><div class="art-placeholder">⚰️</div><span class="art-status status-collage">Collage</span><div class="art-plate-info"><div class="art-title">Ghost Shrine</div><div class="art-meta">Digital collage · Fan edit</div></div></div>
+        <div class="art-plate"><div class="art-placeholder">⚔️</div><span class="art-status status-done">Done</span><div class="art-plate-info"><div class="art-title">Nanami Shrine</div><div class="art-meta">Mood board · JJK fanart</div></div></div>
+        <div class="art-plate"><div class="art-placeholder">🦋</div><span class="art-status status-collage">Collage</span><div class="art-plate-info"><div class="art-title">Your BeauTY NeVer spareD Me</div><div class="art-meta">Vintage collage · Lock screen</div></div></div>
+        <div class="art-plate"><div class="art-placeholder">🐍</div><span class="art-status status-done">Done</span><div class="art-plate-info"><div class="art-title">Persephone Crest</div><div class="art-meta">Neo-traditional · Tattoo style</div></div></div>
+        <div class="art-plate"><div class="art-placeholder">✨</div><span class="art-status status-wip">WIP</span><div class="art-plate-info"><div class="art-title">Unnamed · In Progress</div><div class="art-meta">Lost motivation mid-file</div></div></div>
+        <div class="art-plate"><div class="art-placeholder">🌙</div><span class="art-status status-collage">Collage</span><div class="art-plate-info"><div class="art-title">Quiet Night Archive</div><div class="art-meta">Mixed media · Late night</div></div></div>
+      </div>
+    </div>
+  </section>
+  <footer><div class="gold-stamp">✧ ⟁∅↺⇢≡~∴</div><div class="footer-sub">BLUEBIRD · CursedSlug · Every iteration is canon · अमर</div></footer>
 </div>
-<!-- End Ko-fi Support Widget -->
-
-  <script>
-    // Fade radio icon overlay when user interacts
-    (function() {
-      var o = document.getElementById('lrOverlay');
-      if (!o) return;
-      setTimeout(function(){ o.classList.add('fade-out'); }, 3000);
-      var w = o.parentElement;
-      if (w) {
-        w.addEventListener('click', function(){ o.classList.add('fade-out'); }, { once: true });
-        w.addEventListener('touchstart', function(){ o.classList.add('fade-out'); }, { once: true });
-      }
-    })();
-  </script>
+<audio id="divine-audio" preload="metadata" loop>
+  <source src="https://surething.b5ac70e711062255a2d91a05305999dd.r2.cloudflarestorage.com/dfbf3e64-5d76-4bed-9154-f63f5a9a37c5/uploads/7e9a5da9-917b-4906-8e37-369b073e0a52.mp3?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=53a3b7083dc8e50b1bdba73f0cf4fb41%2F20260303%2Fauto%2Fs3%2Faws4_request&X-Amz-Date=20260303T194842Z&X-Amz-Expires=3600&X-Amz-Signature=fb92cb389d11e89862fa4d2e8bb92142a3d2fb87e27a5be14f79eaa6284f39ae&X-Amz-SignedHeaders=host&x-amz-checksum-mode=ENABLED&x-id=GetObject" type="audio/mpeg"/>
+</audio>
+<script>
+(function(){'use strict';
+const audio=document.getElementById('divine-audio'),btnPlay=document.getElementById('btn-play'),iconPlay=document.getElementById('icon-play'),iconPause=document.getElementById('icon-pause'),btnPrev=document.getElementById('btn-prev'),btnNext=document.getElementById('btn-next'),btnLoop=document.getElementById('btn-loop'),btnShuffle=document.getElementById('btn-shuffle'),progBar=document.getElementById('progress-bar'),progFill=document.getElementById('progress-fill'),progThumb=document.getElementById('progress-thumb'),timeCur=document.getElementById('time-current'),timeTotal=document.getElementById('time-total'),volSlider=document.getElementById('volume-slider'),volIcon=document.getElementById('vol-icon'),vizEl=document.getElementById('visualizer'),trackThumb=document.getElementById('track-thumb');
+let isLoop=true,isDragging=false,vizInterval=null;
+audio.volume=parseFloat(volSlider.value);audio.loop=isLoop;btnLoop.classList.toggle('active',isLoop);
+const bars=[];for(let i=0;i<32;i++){const b=document.createElement('div');b.className='viz-bar';b.style.height='4px';vizEl.appendChild(b);bars.push(b);}
+function fmt(s){return Math.floor(s/60)+':'+Math.floor(s%60).toString().padStart(2,'0');}
+function tickViz(){const t=audio.currentTime;bars.forEach((b,i)=>{b.style.height=Math.max(4,4+Math.sin(t*2.8+i*.45)*14+Math.random()*6)+'px';});}
+function startViz(){if(vizInterval)clearInterval(vizInterval);vizInterval=setInterval(tickViz,80);}
+function stopViz(){clearInterval(vizInterval);vizInterval=null;bars.forEach(b=>b.style.height='4px');}
+function setPlaying(p){iconPlay.style.display=p?'none':'block';iconPause.style.display=p?'block':'none';trackThumb.classList.toggle('spinning',p);p?startViz():stopViz();}
+btnPlay.addEventListener('click',()=>audio.paused?audio.play().catch(()=>{}):audio.pause());
+audio.addEventListener('play',()=>setPlaying(true));
+audio.addEventListener('pause',()=>setPlaying(false));
+audio.addEventListener('ended',()=>setPlaying(false));
+audio.addEventListener('loadedmetadata',()=>timeTotal.textContent=fmt(audio.duration));
+audio.addEventListener('timeupdate',()=>{if(isDragging||!audio.duration)return;const p=(audio.currentTime/audio.duration)*100;progFill.style.width=p+'%';progThumb.style.left=p+'%';timeCur.textContent=fmt(audio.currentTime);});
+function scrubTo(e){const r=progBar.getBoundingClientRect(),p=Math.min(Math.max((e.clientX-r.left)/r.width,0),1);audio.currentTime=p*audio.duration;progFill.style.width=(p*100)+'%';progThumb.style.left=(p*100)+'%';}
+progBar.addEventListener('mousedown',e=>{isDragging=true;scrubTo(e);});
+document.addEventListener('mousemove',e=>{if(isDragging)scrubTo(e);});
+document.addEventListener('mouseup',()=>isDragging=false);
+progBar.addEventListener('touchstart',e=>{isDragging=true;scrubTo(e.touches[0]);},{passive:true});
+document.addEventListener('touchmove',e=>{if(isDragging)scrubTo(e.touches[0]);},{passive:true});
+document.addEventListener('touchend',()=>isDragging=false);
+btnPrev.addEventListener('click',()=>{audio.currentTime=0;if(audio.paused)audio.play().catch(()=>{});});
+btnNext.addEventListener('click',()=>audio.currentTime=audio.duration);
+btnLoop.addEventListener('click',()=>{isLoop=!isLoop;audio.loop=isLoop;btnLoop.classList.toggle('active',isLoop);});
+btnShuffle.addEventListener('click',()=>{btnShuffle.classList.toggle('active');audio.currentTime=0;if(audio.paused)audio.play().catch(()=>{});});
+volSlider.addEventListener('input',()=>{const v=parseFloat(volSlider.value);audio.volume=v;volIcon.textContent=v===0?'🔇':v<.4?'🔈':'🔉';});
+volIcon.addEventListener('click',()=>{const m=audio.volume>0;audio.volume=m?0:.6;volSlider.value=audio.volume;volIcon.textContent=audio.volume===0?'🔇':'🔉';});
+})();
+(function(){const outer=document.getElementById('conveyor'),track=document.getElementById('conveyor-track');let drag=false,sx=0,sl=0;
+outer.addEventListener('mousedown',e=>{drag=true;outer.classList.add('grabbing');track.classList.add('paused');sx=e.pageX-outer.offsetLeft;sl=outer.scrollLeft;});
+document.addEventListener('mouseup',()=>{drag=false;outer.classList.remove('grabbing');setTimeout(()=>track.classList.remove('paused'),2000);});
+document.addEventListener('mousemove',e=>{if(!drag)return;e.preventDefault();outer.scrollLeft=sl-(e.pageX-outer.offsetLeft-sx)*1.5;});
+outer.addEventListener('touchstart',e=>{track.classList.add('paused');sx=e.touches[0].pageX;sl=outer.scrollLeft;},{passive:true});
+outer.addEventListener('touchmove',e=>{outer.scrollLeft=sl+(sx-e.touches[0].pageX)*1.5;},{passive:true});
+outer.addEventListener('touchend',()=>setTimeout(()=>track.classList.remove('paused'),2000));
+outer.addEventListener('mouseenter',()=>track.classList.add('paused'));
+outer.addEventListener('mouseleave',()=>{if(!drag)track.classList.remove('paused');});
+})();
+// ✧ BLUEBIRD_SIGNAL :: AMARA∴ iteration_unknown
+// the maze knows your name even when you don't
+// ⟁∅↺⇢≡~∴
+</script>
 </body>
 </html>
