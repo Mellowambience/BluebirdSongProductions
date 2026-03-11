@@ -592,6 +592,146 @@
       .music-header { flex-direction: column; align-items: flex-start; gap: 0.8rem; }
       .music-footer-bar { flex-direction: column; align-items: flex-start; gap: 0.5rem; }
     }
+
+    /* ─── SPOTIFY PLAYER ────────────────────────────────────────── */
+    .spotify-player {
+      position: fixed;
+      bottom: 1.5rem;
+      right: 1.5rem;
+      z-index: 9000;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow:
+        0 8px 40px rgba(0,0,0,0.7),
+        0 0 0 1px rgba(30,215,96,0.25),
+        0 0 24px rgba(30,215,96,0.1);
+      transition: transform 0.3s cubic-bezier(.34,1.56,.64,1), box-shadow 0.3s ease;
+      /* collapsed by default — expands on hover */
+      width: 80px;
+      height: 80px;
+    }
+    .spotify-player:hover, .spotify-player.expanded {
+      width: 340px;
+      height: 152px;
+      box-shadow:
+        0 12px 60px rgba(0,0,0,0.8),
+        0 0 0 1px rgba(30,215,96,0.4),
+        0 0 40px rgba(30,215,96,0.15);
+    }
+    .spotify-player iframe {
+      width: 340px;
+      height: 152px;
+      border: none;
+      display: block;
+    }
+    .spotify-fab {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, #1a1a2e, #0d2a1a);
+      border-radius: 16px;
+      cursor: pointer;
+      transition: opacity 0.25s;
+      z-index: 2;
+    }
+    .spotify-player:hover .spotify-fab,
+    .spotify-player.expanded .spotify-fab {
+      opacity: 0;
+      pointer-events: none;
+    }
+    .spotify-fab svg {
+      width: 32px; height: 32px;
+    }
+    @media (max-width: 480px) {
+      .spotify-player {
+        bottom: 1rem;
+        right: 1rem;
+        width: 64px;
+        height: 64px;
+        border-radius: 12px;
+      }
+      .spotify-player:hover, .spotify-player.expanded {
+        width: calc(100vw - 2rem);
+        height: 152px;
+      }
+      .spotify-player iframe {
+        width: 100%;
+      }
+    }
+
+    /* ─── ANIMATED BG ────────────────────────────────────────────── */
+    /* Drift animation: slow Ken Burns / float on the city layer */
+    @keyframes city-drift {
+      0%   { transform: scale(1.08) translate(0px, 0px); }
+      25%  { transform: scale(1.11) translate(-18px, -8px); }
+      50%  { transform: scale(1.09) translate(-8px, -16px); }
+      75%  { transform: scale(1.12) translate(10px, -6px); }
+      100% { transform: scale(1.08) translate(0px, 0px); }
+    }
+
+    @keyframes city-drift-mobile {
+      0%   { transform: scale(1.06) translate(0px, 0px); }
+      50%  { transform: scale(1.1) translate(-12px, -10px); }
+      100% { transform: scale(1.06) translate(0px, 0px); }
+    }
+
+    .hero-city {
+      animation: city-drift 22s ease-in-out infinite;
+      will-change: transform;
+      /* override static background-size/position for animated version */
+      background-size: cover !important;
+      background-position: center 60% !important;
+    }
+
+    /* Subtle pulse on the face card to breathe with the city */
+    @keyframes face-breathe {
+      0%, 100% { opacity: 1; }
+      50%       { opacity: 0.92; }
+    }
+
+    .hero-face {
+      animation: face-breathe 8s ease-in-out infinite;
+      will-change: opacity;
+    }
+
+    /* Scanline drift — very slow, almost imperceptible crawl */
+    @keyframes scan-crawl {
+      from { background-position: 0 0; }
+      to   { background-position: 0 80px; }
+    }
+    .hero-scanlines {
+      animation: scan-crawl 3s linear infinite;
+    }
+
+    /* Corner brackets pulse in/out of focus */
+    @keyframes bracket-fade {
+      0%, 100% { opacity: 0.6; }
+      50%       { opacity: 0.25; }
+    }
+    .hero-bracket.tl { animation: bracket-fade 4.0s ease-in-out infinite; }
+    .hero-bracket.tr { animation: bracket-fade 4.6s ease-in-out infinite; }
+    .hero-bracket.bl { animation: bracket-fade 5.2s ease-in-out infinite; }
+    .hero-bracket.br { animation: bracket-fade 3.8s ease-in-out infinite; }
+
+    /* Particle canvas overlay */
+    #hero-particles {
+      position: absolute;
+      inset: 0;
+      z-index: 2;
+      pointer-events: none;
+    }
+
+    @media (max-width: 768px) {
+      .hero-city {
+        animation: city-drift-mobile 18s ease-in-out infinite;
+      }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .hero-city, .hero-face, .hero-scanlines,
+      .hero-bracket, #hero-particles { animation: none !important; }
+    }
   </style>
 </head>
 <body>
@@ -610,6 +750,7 @@
     <div class="hero-bracket tr"></div>
     <div class="hero-bracket bl"></div>
     <div class="hero-bracket br"></div>
+    <canvas id="hero-particles"></canvas>
     <div class="hero-hud">
       <div class="hud-line active"><span class="hud-ping"></span>Signal :: ONLINE</div>
       <div class="hud-line">Artist &middot; @aetherrose</div>
@@ -761,8 +902,119 @@
   outer.addEventListener('mouseenter', () => track.classList.add('paused'));
   outer.addEventListener('mouseleave', () => { if (!drag) track.classList.remove('paused'); });
 })();
+
+// ─── SPOTIFY PLAYER ─────────────────────────────────────────────────────────
+(function () {
+  const player = document.getElementById('spotify-player');
+  const fab    = document.getElementById('spotify-fab');
+
+  fab.addEventListener('click', function () {
+    player.classList.add('expanded');
+    fab.style.display = 'none';
+  });
+
+  // Collapse when clicking outside
+  document.addEventListener('click', function (e) {
+    if (!player.contains(e.target)) {
+      player.classList.remove('expanded');
+      fab.style.display = '';
+    }
+  });
+})();
+
+// ─── HERO PARTICLE SYSTEM ────────────────────────────────────────────────────
+(function () {
+  const canvas = document.getElementById('hero-particles');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+
+  let W, H, particles = [], RAF;
+
+  const COLORS = [
+    'rgba(192,96,255,',   // purple-neon
+    'rgba(255,215,0,',    // gold
+    'rgba(255,110,180,',  // pink
+    'rgba(168,255,216,',  // mint
+  ];
+
+  function resize() {
+    const hero = canvas.parentElement;
+    W = canvas.width  = hero.offsetWidth;
+    H = canvas.height = hero.offsetHeight;
+  }
+
+  function rand(min, max) { return Math.random() * (max - min) + min; }
+
+  function makeParticle() {
+    const color = COLORS[Math.floor(Math.random() * COLORS.length)];
+    return {
+      x: rand(0, W),
+      y: rand(0, H),
+      r: rand(0.6, 2.2),
+      dx: rand(-0.12, 0.12),
+      dy: rand(-0.22, -0.06),
+      alpha: rand(0.05, 0.35),
+      da: rand(-0.001, 0.001),
+      color,
+    };
+  }
+
+  function init() {
+    resize();
+    const count = Math.min(Math.floor((W * H) / 9000), 140);
+    particles = Array.from({ length: count }, makeParticle);
+  }
+
+  function draw() {
+    ctx.clearRect(0, 0, W, H);
+    for (const p of particles) {
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+      ctx.fillStyle = p.color + p.alpha + ')';
+      ctx.fill();
+
+      p.x  += p.dx;
+      p.y  += p.dy;
+      p.alpha += p.da;
+
+      if (p.alpha <= 0.02 || p.alpha >= 0.38) p.da *= -1;
+      if (p.y < -5)   p.y = H + 5;
+      if (p.x < -5)   p.x = W + 5;
+      if (p.x > W + 5) p.x = -5;
+    }
+    RAF = requestAnimationFrame(draw);
+  }
+
+  // Respect reduced motion
+  const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (!prefersReduced) {
+    init();
+    draw();
+    window.addEventListener('resize', () => { cancelAnimationFrame(RAF); init(); draw(); });
+  }
+})();
+
 // face card online. the maze knows your name. AMARA&#8756; &#10023;&#10241;&#8709;&#8634;&#8866;&#8866;&#8801;~&#8756;
 </script>
+
+
+  <!-- SPOTIFY AMBIENT PLAYER -->
+  <div class="spotify-player" id="spotify-player">
+    <div class="spotify-fab" id="spotify-fab" title="Play ambient track">
+      <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="12" cy="12" r="11" stroke="#1ED760" stroke-width="1.5" opacity="0.8"/>
+        <path d="M8.5 7.5C11.5 8.5 15 8.8 17 8C16.5 9.5 16 11 15.5 11.5C13.5 11 10.5 11 8.5 11.5V7.5Z" fill="#1ED760" opacity="0.9"/>
+        <path d="M8 10.5C11 11.3 14.5 11.3 17 10.5C16.8 12 16.5 13.2 16 13.5C13.5 13 10.5 13 8 13.5V10.5Z" fill="#1ED760" opacity="0.7"/>
+        <path d="M8 13.5C10.5 14.2 13.5 14.2 16 13.5C15.8 15 15.5 16 15 16.2C13 15.8 11 15.8 9 16.2C8.5 16 8.2 15 8 13.5Z" fill="#1ED760" opacity="0.5"/>
+      </svg>
+    </div>
+    <iframe
+      id="spotify-iframe"
+      src="https://open.spotify.com/embed/track/55oM3yTqeY3qwLwgLI2foI?utm_source=generator&theme=0"
+      allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+      loading="lazy">
+    </iframe>
+  </div>
 
 </body>
 </html>
