@@ -72,10 +72,32 @@
     .hero-bg-img {
       position: absolute;
       inset: 0;
-      background-image: url('assets/amara-hero.jpg');
-      background-size: cover;
-      background-position: center 15%;
       z-index: 0;
+    }
+
+    /* City layer — bottom */
+    .hero-city {
+      position: absolute;
+      inset: 0;
+      background-image: url('assets/philly-skyline.jpg');
+      background-size: cover;
+      background-position: center 60%;
+      z-index: 0;
+      /* tint the city toward the AMARA palette */
+      filter: brightness(0.55) saturate(1.4) hue-rotate(220deg);
+    }
+
+    /* Face card layer — on top of city */
+    .hero-face {
+      position: absolute;
+      inset: 0;
+      background-image: url('assets/amara-hero.jpg');
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center 10%;
+      z-index: 1;
+      /* blend face card into the city via luminosity */
+      mix-blend-mode: normal;
     }
 
     .hero-veil {
@@ -580,7 +602,8 @@
 
   <!-- HERO -->
   <div class="hero">
-    <div class="hero-bg-img"></div>
+    <div class="hero-city"></div>
+    <div class="hero-face"></div>
     <div class="hero-veil"></div>
     <div class="hero-scanlines"></div>
     <div class="hero-bracket tl"></div>
