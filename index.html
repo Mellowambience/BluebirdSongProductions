@@ -106,7 +106,58 @@
     @keyframes glitch-1{0%,90%,100%{opacity:0;transform:translateX(0)}91%{opacity:.7;transform:translateX(3px)}93%{opacity:.7;transform:translateX(-3px)}95%{opacity:0}}
     @keyframes glitch-2{0%,85%,100%{opacity:0;transform:translateX(0)}86%{opacity:.6;transform:translateX(-2px)}88%{opacity:.6;transform:translateX(2px)}90%{opacity:0}}
     @media(max-width:600px){.sol-card{grid-template-columns:1fr}.sol-avatar{width:70px;height:70px;font-size:1.7rem}section{padding:2rem 1.2rem}}
-  </style>
+  
+    /* ── Featured Track Card ─────────────────────────────── */
+    .featured-section{padding:2rem 2rem 0}
+    .featured-card{
+      background:linear-gradient(135deg,rgba(155,48,255,.1) 0%,rgba(10,10,15,.98) 100%);
+      border:1px solid rgba(192,96,255,.35);
+      border-radius:20px;
+      padding:1.6rem 1.8rem;
+      display:flex;align-items:center;gap:1.6rem;
+      cursor:pointer;
+      text-decoration:none;
+      transition:box-shadow .25s,border-color .25s,transform .2s;
+      position:relative;overflow:hidden;
+      max-width:1200px;margin:0 auto;
+    }
+    .featured-card::before{
+      content:'';position:absolute;inset:0;
+      background:radial-gradient(ellipse 60% 80% at 80% 50%,rgba(192,96,255,.08) 0%,transparent 70%);
+      pointer-events:none;
+    }
+    .featured-card:hover{
+      box-shadow:0 0 40px rgba(192,96,255,.3),0 0 0 1px rgba(192,96,255,.5);
+      border-color:rgba(192,96,255,.6);
+      transform:translateY(-2px);
+    }
+    .featured-thumb{
+      width:72px;height:72px;border-radius:12px;
+      object-fit:cover;flex-shrink:0;
+      border:1px solid rgba(155,48,255,.3);
+      box-shadow:0 0 20px rgba(192,96,255,.2);
+    }
+    .featured-meta{flex:1;min-width:0}
+    .featured-badge{
+      font-size:.58rem;letter-spacing:.2em;text-transform:uppercase;
+      color:var(--mint);background:rgba(168,255,216,.08);
+      border:1px solid rgba(168,255,216,.25);border-radius:50px;
+      padding:.2rem .7rem;display:inline-block;margin-bottom:.5rem;
+    }
+    .featured-title{
+      font-size:1.05rem;font-weight:800;
+      background:linear-gradient(135deg,var(--ghost) 0%,var(--purple-neon) 60%,var(--gold) 100%);
+      -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+      white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+    }
+    .featured-sub{font-size:.72rem;color:var(--text-dim);margin-top:.2rem}
+    .featured-cta{
+      font-size:.68rem;letter-spacing:.15em;text-transform:uppercase;
+      color:var(--purple-neon);display:flex;align-items:center;gap:.4rem;flex-shrink:0;
+    }
+    .featured-cta::after{content:'→';transition:transform .2s}
+    .featured-card:hover .featured-cta::after{transform:translateX(4px)}
+</style>
 </head>
 <body>
 <div class="bg-mesh"></div>
@@ -134,6 +185,17 @@
       <span class="ticker-item">Signal Gold · Corrupted Pink · Fae Mint</span>
     </div>
   </div>
+  <section class="featured-section">
+    <a class="featured-card" href="visualizer.html">
+      <img class="featured-thumb" src="https://cdn1.suno.ai/sAura9.jpg" alt="am i starting to love you?" crossorigin="anonymous" />
+      <div class="featured-meta">
+        <span class="featured-badge">✦ New Release</span>
+        <div class="featured-title">am i starting to love you?...</div>
+        <div class="featured-sub">Rin · @aetherrose · EDM / hyperpop · trance · Suno v4.5</div>
+      </div>
+      <span class="featured-cta">Open Visualizer</span>
+    </a>
+  </section>
   <section id="player-section">
     <div class="section-label">∴ Background Signal</div>
     <div class="player-wrap">
