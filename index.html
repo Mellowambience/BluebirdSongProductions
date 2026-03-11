@@ -213,5 +213,89 @@
 // the maze knows your name even when you don't
 // ⟁∅↺⇢≡~∴
 </script>
+
+<!-- ╔══ AETHERHAVEN HUB NAV ══════════════════════════════════╗ -->
+<!-- ║  Interconnected pages · mellowambience.github.io        ║ -->
+<!-- ╚══════════════════════════════════════════════════════════╝ -->
+<nav class="ahnav" aria-label="Aetherhaven network">
+  <div class="ahnav-inner">
+    <span class="ahnav-logo">✦ Aetherhaven</span>
+    <div class="ahnav-links">
+      <a href="https://mellowambience.github.io/" class="ahnav-item" title="Aetherhaven">⟁ Aetherhaven</a>
+      <span class="ahnav-item ahnav-active">🪶 Bluebird</span>
+      <a href="https://mellowambience.github.io/natalie/" class="ahnav-item" title="Natalie">🌊 Natalie</a>
+      <a href="https://mellowambience.github.io/aethertab/" class="ahnav-item" title="AetherTab">⟐ AetherTab</a>
+    </div>
+  </div>
+</nav>
+<style>
+  .ahnav {
+    position: fixed;
+    bottom: 1.2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10000;
+    pointer-events: auto;
+  }
+  .ahnav-inner {
+    display: flex;
+    align-items: center;
+    gap: 0.2rem;
+    background: rgba(10,8,20,0.92);
+    border: 1px solid rgba(155,48,255,0.25);
+    border-radius: 50px;
+    padding: 0.45rem 0.7rem;
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    box-shadow: 0 0 24px rgba(155,48,255,0.15), 0 4px 32px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.04);
+    white-space: nowrap;
+    max-width: calc(100vw - 2rem);
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  .ahnav-inner::-webkit-scrollbar { display: none; }
+  .ahnav-logo {
+    font-size: 0.58rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #c8bfe8;
+    padding: 0.2rem 0.7rem 0.2rem 0.3rem;
+    border-right: 1px solid rgba(155,48,255,0.25);
+    margin-right: 0.3rem;
+    flex-shrink: 0;
+    font-weight: 600;
+  }
+  .ahnav-links {
+    display: flex;
+    align-items: center;
+    gap: 0.15rem;
+  }
+  .ahnav-item {
+    font-size: 0.62rem;
+    letter-spacing: 0.08em;
+    padding: 0.3rem 0.7rem;
+    border-radius: 50px;
+    text-decoration: none;
+    color: #c8bfe8;
+    transition: color 0.15s, background 0.15s;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+  a.ahnav-item:hover {
+    color: #F0F0FF;
+    background: rgba(155,48,255,0.1);
+  }
+  .ahnav-active {
+    color: #C060FF;
+    background: rgba(155,48,255,0.18);
+    font-weight: 600;
+    cursor: default;
+  }
+  @media (max-width: 480px) {
+    .ahnav-logo { display: none; }
+    .ahnav-item { font-size: 0.6rem; padding: 0.28rem 0.55rem; }
+  }
+</style>
+<!-- ╚══ /AETHERHAVEN HUB NAV ═══════════════════════════════════╝ -->
 </body>
 </html>
